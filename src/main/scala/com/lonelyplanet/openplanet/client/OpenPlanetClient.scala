@@ -1,5 +1,5 @@
 package com.lonelyplanet.openplanet.client
 
-class OpenPlanetClient(url: String, apiKey: String) {
+class OpenPlanetClient(baseUrl: String, apiKey: String) {
 
 }
