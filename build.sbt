@@ -4,7 +4,9 @@ import com.typesafe.sbt.SbtScalariform.ScalariformKeys
 
 name := "open-planet-scala-client"
 
-version := "0.0.1"
+organization := "com.lonelyplanet"
+
+version := "0.1.1"
 
 scalaVersion := "2.11.8"
 
@@ -13,7 +15,8 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "io.spray"             %% "spray-json"             % "1.3.2"
+  "io.spray"             %% "spray-json"             % "1.3.2",
+  "io.rest-assured"      %  "rest-assured"           % "3.0.1"
 )
 
 SbtScalariform.scalariformSettings
