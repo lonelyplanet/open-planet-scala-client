@@ -6,6 +6,19 @@ Open Planet Scala Client
 
 This is the Scala client for the Open Planet API
 
+# Downloading
+
+    "com.lonelyplanet" %% "open-planet-scala-client" % "0.1.1"
+
+
+You might need to also add our repository:
+
+```
+resolvers ++= Seq(
+  Resolver.bintrayRepo("lonelyplanet", "maven")
+)
+```
+
 You can use it to get access to following resources:
 * Activities
 * Articles
