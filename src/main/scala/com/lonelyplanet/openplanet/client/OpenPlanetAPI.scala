@@ -9,7 +9,8 @@ class OpenPlanetAPI(baseUrl: String, apiKey: String)
     with OpAtlas
     with OpImages
     with OpLodgings
-    with OpSlugs {
+    with OpSlugs
+    with OpShop {
   val client: OpenPlanetClient = new OpenPlanetClient(baseUrl, apiKey)
 
 }

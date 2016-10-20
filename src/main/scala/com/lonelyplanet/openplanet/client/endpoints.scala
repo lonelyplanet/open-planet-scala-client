@@ -41,3 +41,8 @@ trait Lodgings {
 trait Slugs {
   def slug(id: String, include: Option[String] = None): JsValue
 }
+
+trait Shop {
+  def product(id: String, include: Option[String] = None): JsValue
+  def products(limit: Int = 10, offset: Int = 0): JsValue
+}

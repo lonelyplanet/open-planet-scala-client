@@ -7,6 +7,6 @@ trait OpLodgings extends Lodgings {
   val client: OpenPlanetClient
 
   override def lodgings(limit: Int = 10, offset: Int = 0): JsValue = {
-    client.getCollection("/lodgings")
+    client.getCollection("/lodgings", limit, offset)
   }
 }
