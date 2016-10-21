@@ -1,7 +1,9 @@
 package com.lonelyplanet.openplanet.client.apis
 
-import com.lonelyplanet.openplanet.client.{Articles, OpenPlanetClient}
+import com.lonelyplanet.openplanet.client.{Articles, IncludeParameter, OpenPlanetClient}
 import spray.json.JsValue
+
+import scala.collection.immutable.Seq
 
 trait OpArticles extends Articles {
   val client: OpenPlanetClient
@@ -10,7 +12,7 @@ trait OpArticles extends Articles {
     client.getCollection("/articles", limit, offset)
   }
 
-  override def article(id: String, include: Option[String] = None): JsValue = {
+  override def article(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
     client.getSingle(s"/articles/$id", include)
   }
 
@@ -18,7 +20,7 @@ trait OpArticles extends Articles {
     client.getCollection("/articles/categories", limit, offset)
   }
 
-  override def articlesCategory(id: String, include: Option[String] = None): JsValue = {
+  override def articlesCategory(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
     client.getSingle(s"/articles/categories/$id", include)
   }
 }

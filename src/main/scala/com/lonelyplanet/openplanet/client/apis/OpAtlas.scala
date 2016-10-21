@@ -12,7 +12,7 @@ trait OpAtlas extends Atlas {
     client.getCollection("/places", limit, offset)
   }
 
-  override def place(id: String, include: Option[String] = None): JsValue = {
+  override def place(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
     client.getSingle(s"/places/$id", include)
   }
 
@@ -28,23 +28,23 @@ trait OpAtlas extends Atlas {
     client.getCollection("/pois", limit, offset, filter, include)
   }
 
-  override def placeIdImageAssociations(id: String, include: Option[String] = None) = {
+  override def placeIdImageAssociations(id: String, include: Seq[IncludeParameter] = Seq.empty) = {
     client.getSingle(s"/places/$id/image_associations", include)
   }
 
-  override def placeIdAncestry(id: String, include: Option[String] = None) = {
+  override def placeIdAncestry(id: String, include: Seq[IncludeParameter] = Seq.empty) = {
     client.getSingle(s"/places/$id/ancestry", include)
   }
 
-  override def placeIdDescendants(id: String, include: Option[String] = None) = {
+  override def placeIdDescendants(id: String, include: Seq[IncludeParameter] = Seq.empty) = {
     client.getSingle(s"/places/$id/descendants", include)
   }
 
-  override def placeIdTopExperiences(id: String, include: Option[String] = None) = {
+  override def placeIdTopExperiences(id: String, include: Seq[IncludeParameter] = Seq.empty) = {
     client.getSingle(s"/places/$id/top_experiences", include)
   }
 
-  override def placeIdPois(id: String, include: Option[String] = None) = {
+  override def placeIdPois(id: String, include: Seq[IncludeParameter] = Seq.empty) = {
     client.getSingle(s"/places/$id/pois", include)
   }
 }

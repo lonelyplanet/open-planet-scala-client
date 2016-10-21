@@ -21,12 +21,13 @@ class OpenPlanetClient(baseUrl: String, apiKey: String) {
     this(baseUrl, "")
   }
 
-  def getSingle(path: String, include: Option[String] = None): JsValue = {
-    include match {
-      case None =>
-        given().urlEncodingEnabled(false).get(path).body.asString.parseJson
-      case Some(includeParam) =>
-        given().param("include", includeParam).urlEncodingEnabled(false).get(path).body.asString.parseJson
+  def getSingle(path: String, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
+    val includes = parseInclude(include)
+
+    if (includes.isEmpty) {
+      given().urlEncodingEnabled(false).get(path).body.asString.parseJson
+    } else {
+      given().params(includes.get._1, includes.get._2).urlEncodingEnabled(false).get(path).body.asString.parseJson
     }
   }
 
