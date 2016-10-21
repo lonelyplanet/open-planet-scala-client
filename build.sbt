@@ -16,7 +16,8 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   "io.spray"             %% "spray-json"             % "1.3.2",
-  "io.rest-assured"      %  "rest-assured"           % "3.0.1"
+  "io.rest-assured"      %  "rest-assured"           % "3.0.1",
+  "org.scalatest"        %% "scalatest"              % "3.0.0" % "test"
 )
 
 SbtScalariform.scalariformSettings
