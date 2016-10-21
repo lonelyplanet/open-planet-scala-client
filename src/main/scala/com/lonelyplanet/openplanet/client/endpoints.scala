@@ -24,6 +24,7 @@ trait Atlas {
   def places(limit: Int = 10, offset: Int = 0): JsValue
   def place(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
   def placeIds(limit: Int = 10, offset: Int = 0): JsValue
+  def poi(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
   def pois(limit: Int = 10, offset: Int = 0): JsValue
   def pois(limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue
   def placeIdImageAssociations(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue

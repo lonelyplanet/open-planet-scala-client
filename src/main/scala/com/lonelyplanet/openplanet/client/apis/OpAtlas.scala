@@ -20,6 +20,10 @@ trait OpAtlas extends Atlas {
     client.getCollection("/places/ids")
   }
 
+  override def poi(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
+    client.getSingle(s"/poi/$id", include)
+  }
+
   override def pois(limit: Int = 10, offset: Int = 0): JsValue = {
     client.getCollection("/pois", limit, offset)
   }
