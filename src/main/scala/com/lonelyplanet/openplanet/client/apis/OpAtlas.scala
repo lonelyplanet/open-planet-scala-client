@@ -17,11 +17,11 @@ trait OpAtlas extends Atlas {
   }
 
   override def placeIds(limit: Int = 10, offset: Int = 0): JsValue = {
-    client.getCollection("/places/ids")
+    client.getCollection("/places/ids", limit, offset)
   }
 
   override def poi(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
-    client.getSingle(s"/poi/$id", include)
+    client.getSingle(s"/pois/$id", include)
   }
 
   override def pois(limit: Int = 10, offset: Int = 0): JsValue = {

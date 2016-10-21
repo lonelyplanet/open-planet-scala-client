@@ -8,7 +8,7 @@ This is the Scala client for the Open Planet API
 
 # Downloading
 
-    "com.lonelyplanet" %% "open-planet-scala-client" % "0.1.4"
+    "com.lonelyplanet" %% "open-planet-scala-client" % "0.1.5"
 
 
 You might need to also add our repository:
