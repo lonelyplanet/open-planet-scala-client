@@ -53,13 +53,6 @@ class OpenPlanetClient(baseUrl: String, apiKey: String) {
       .get(path).body.asString.parseJson
   }
 
-  def getCollectionWithFilter(path: String, limit: Int, offset: Int, filterKey: String, filterValue: String): JsValue = {
-    given().urlEncodingEnabled(false)
-      .params("page[limit]", limit).params("page[offset]", offset)
-      .param("filter" + filterKey, filterValue)
-      .get(path).body.asString.parseJson
-  }
-
   def post(path: String, body: String): JsValue = {
     given()
       .contentType("application/vnd.api+json")
