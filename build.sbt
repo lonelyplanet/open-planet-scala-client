@@ -6,7 +6,7 @@ name := "open-planet-scala-client"
 
 organization := "com.lonelyplanet"
 
-version := "0.1.2"
+version := "0.1.3-SNAPSHOT"
 
 scalaVersion := "2.11.8"
 

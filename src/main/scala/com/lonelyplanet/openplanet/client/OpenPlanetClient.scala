@@ -4,8 +4,12 @@ import io.restassured.RestAssured
 import io.restassured.RestAssured._
 import io.restassured.config.EncoderConfig
 import spray.json._
+import collection.immutable.Seq
+import collection.JavaConversions._
+import QueryParameterParser._
 
 class OpenPlanetClient(baseUrl: String, apiKey: String) {
+
   RestAssured.baseURI = baseUrl
 
   RestAssured.config = RestAssured.config().encoderConfig(
@@ -24,6 +28,22 @@ class OpenPlanetClient(baseUrl: String, apiKey: String) {
       case Some(includeParam) =>
         given().param("include", includeParam).urlEncodingEnabled(false).get(path).body.asString.parseJson
     }
+  }
+
+  def getCollection(path: String, limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue = {
+    val includes = parseInclude(include)
+
+    val urlPartWithoutInclude = given().urlEncodingEnabled(false)
+      .params("page[limit]", limit).params("page[offset]", offset)
+      .params(parseFilter(filter))
+
+    val urlPartWithMaybeInclude = if (includes.isDefined) {
+      urlPartWithoutInclude.params(includes.get._1, includes.get._2)
+    } else {
+      urlPartWithoutInclude
+    }
+
+    urlPartWithMaybeInclude.get(path).body.asString.parseJson
   }
 
   def getCollection(path: String, limit: Int = 10, offset: Int = 0): JsValue = {

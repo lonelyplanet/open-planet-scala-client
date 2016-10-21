@@ -1,7 +1,9 @@
 package com.lonelyplanet.openplanet.client.apis
 
-import com.lonelyplanet.openplanet.client.{Atlas, OpenPlanetClient}
+import com.lonelyplanet.openplanet.client.{Atlas, FilterParameter, IncludeParameter, OpenPlanetClient}
 import spray.json.JsValue
+
+import collection.immutable.Seq
 
 trait OpAtlas extends Atlas {
   val client: OpenPlanetClient
@@ -20,6 +22,10 @@ trait OpAtlas extends Atlas {
 
   override def pois(limit: Int = 10, offset: Int = 0): JsValue = {
     client.getCollection("/pois", limit, offset)
+  }
+
+  override def pois(limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue = {
+    client.getCollection("/pois", limit, offset, filter, include)
   }
 
   override def placeIdImageAssociations(id: String, include: Option[String] = None) = {

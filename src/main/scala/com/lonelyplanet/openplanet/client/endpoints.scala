@@ -2,6 +2,8 @@ package com.lonelyplanet.openplanet.client
 
 import spray.json.JsValue
 
+import scala.collection.immutable.Seq
+
 trait Activities {
   def activity(id: String, include: Option[String] = None): JsValue
 }
@@ -23,6 +25,7 @@ trait Atlas {
   def place(id: String, include: Option[String] = None): JsValue
   def placeIds(limit: Int = 10, offset: Int = 0): JsValue
   def pois(limit: Int = 10, offset: Int = 0): JsValue
+  def pois(limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue
   def placeIdImageAssociations(id: String, include: Option[String] = None): JsValue
   def placeIdAncestry(id: String, include: Option[String] = None): JsValue
   def placeIdDescendants(id: String, include: Option[String] = None): JsValue
