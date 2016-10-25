@@ -6,6 +6,8 @@ import scala.collection.immutable.Seq
 
 trait Activities {
   def activity(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
+  def activities(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter] = Seq.empty, include: Seq[IncludeParameter] = Seq.empty): JsValue
+  def activitiesAggregation(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter] = Seq.empty, include: Seq[IncludeParameter] = Seq.empty): JsValue
 }
 
 trait Annotate {
