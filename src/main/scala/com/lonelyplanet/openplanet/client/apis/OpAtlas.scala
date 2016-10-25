@@ -49,10 +49,10 @@ trait OpAtlas extends Atlas {
   }
 
   override def poisNearby(id: String, limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue = {
-    client.getCollection(s"/places/$id/nearby", limit, offset, filter, include)
+    client.getCollection(s"/pois/$id/nearby", limit, offset, filter, include)
   }
 
   override def poisAggregation(limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue = {
-    client.getCollection("/places/aggregation", limit, offset, filter, include)
+    client.getCollection("/pois/aggregation", limit, offset, filter, include)
   }
 }
