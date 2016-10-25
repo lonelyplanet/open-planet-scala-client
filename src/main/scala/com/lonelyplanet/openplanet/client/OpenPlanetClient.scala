@@ -47,12 +47,6 @@ class OpenPlanetClient(baseUrl: String, apiKey: String) {
     urlPartWithMaybeInclude.get(path).body.asString.parseJson
   }
 
-  def getCollection(path: String, limit: Int = 10, offset: Int = 0): JsValue = {
-    given().urlEncodingEnabled(false)
-      .params("page[limit]", limit).params("page[offset]", offset)
-      .get(path).body.asString.parseJson
-  }
-
   def post(path: String, body: String): JsValue = {
     given()
       .contentType("application/vnd.api+json")

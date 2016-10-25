@@ -14,24 +14,24 @@ trait Annotate {
 }
 
 trait Articles {
-  def articles(limit: Int = 10, offset: Int = 0): JsValue
+  def articles(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue
   def article(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
-  def articlesCategories(limit: Int = 10, offset: Int = 0): JsValue
+  def articlesCategories(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue
   def articlesCategory(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
 }
 
 trait Atlas {
-  def places(limit: Int = 10, offset: Int = 0): JsValue
+  def places(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue
   def place(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
-  def placeIds(limit: Int = 10, offset: Int = 0): JsValue
+  def placeIds(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue
   def poi(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
-  def pois(limit: Int = 10, offset: Int = 0): JsValue
-  def pois(limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue
+  def pois(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue
   def placeIdImageAssociations(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
   def placeIdAncestry(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
   def placeIdDescendants(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
   def placeIdTopExperiences(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
   def placeIdPois(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
+  def poisNearby(id: String, limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter] = Seq.empty): JsValue
 }
 
 trait Images {

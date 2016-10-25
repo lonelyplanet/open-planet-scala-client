@@ -8,27 +8,23 @@ import collection.immutable.Seq
 trait OpAtlas extends Atlas {
   val client: OpenPlanetClient
 
-  override def places(limit: Int = 10, offset: Int = 0): JsValue = {
-    client.getCollection("/places", limit, offset)
+  override def places(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter] = Seq.empty, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
+    client.getCollection("/places", limit, offset, filter, include)
   }
 
   override def place(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
     client.getSingle(s"/places/$id", include)
   }
 
-  override def placeIds(limit: Int = 10, offset: Int = 0): JsValue = {
-    client.getCollection("/places/ids", limit, offset)
+  override def placeIds(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter] = Seq.empty, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
+    client.getCollection("/places/ids", limit, offset, filter, include)
   }
 
   override def poi(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
     client.getSingle(s"/pois/$id", include)
   }
 
-  override def pois(limit: Int = 10, offset: Int = 0): JsValue = {
-    client.getCollection("/pois", limit, offset)
-  }
-
-  override def pois(limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue = {
+  override def pois(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter] = Seq.empty, include: Seq[IncludeParameter] = Seq.empty): JsValue = {
     client.getCollection("/pois", limit, offset, filter, include)
   }
 
@@ -50,5 +46,9 @@ trait OpAtlas extends Atlas {
 
   override def placeIdPois(id: String, include: Seq[IncludeParameter] = Seq.empty) = {
     client.getSingle(s"/places/$id/pois", include)
+  }
+
+  override def poisNearby(id: String, limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue = {
+    client.getCollection(s"/places/$id/nearby", limit, offset, filter, include)
   }
 }
