@@ -20,6 +20,12 @@ class QueryParameterParserSpec extends FlatSpec with Matchers {
     output shouldBe Map.empty
   }
 
+  it should "parse empty filter value" in {
+    val input = Seq(FilterParameter("[a]", ""))
+    val output = parseFilter(input)
+    output shouldBe Map("filter[a]" -> "")
+  }
+
   it should "parse include query parameters" in {
     val input = Seq(IncludeParameter("user"), IncludeParameter("place"), IncludeParameter("poi"))
     val output = parseInclude(input)
