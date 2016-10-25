@@ -32,6 +32,7 @@ trait Atlas {
   def placeIdTopExperiences(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
   def placeIdPois(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
   def poisNearby(id: String, limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter] = Seq.empty): JsValue
+  def poisAggregation(limit: Int = 10, offset: Int = 10, filter: Seq[FilterParameter], include: Seq[IncludeParameter] = Seq.empty): JsValue
 }
 
 trait Images {
