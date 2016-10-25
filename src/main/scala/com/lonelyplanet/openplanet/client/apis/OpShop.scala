@@ -1,6 +1,6 @@
 package com.lonelyplanet.openplanet.client.apis
 
-import com.lonelyplanet.openplanet.client.{IncludeParameter, OpenPlanetClient, Shop}
+import com.lonelyplanet.openplanet.client.{FilterParameter, IncludeParameter, OpenPlanetClient, Shop}
 import spray.json.JsValue
 
 import scala.collection.immutable.Seq
@@ -12,7 +12,7 @@ trait OpShop extends Shop {
     client.getSingle(s"/products/$id", include)
   }
 
-  override def products(limit: Int, offset: Int): JsValue = {
-    client.getCollection(s"/products", limit, offset)
+  override def products(limit: Int, offset: Int, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue = {
+    client.getCollection(s"/products", limit, offset, filter, include)
   }
 }

@@ -39,7 +39,7 @@ trait Images {
 }
 
 trait Lodgings {
-  def lodgings(limit: Int = 10, offset: Int = 0): JsValue
+  def lodgings(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue
 }
 
 trait Slugs {
@@ -48,5 +48,5 @@ trait Slugs {
 
 trait Shop {
   def product(id: String, include: Seq[IncludeParameter] = Seq.empty): JsValue
-  def products(limit: Int = 10, offset: Int = 0): JsValue
+  def products(limit: Int = 10, offset: Int = 0, filter: Seq[FilterParameter], include: Seq[IncludeParameter]): JsValue
 }
