@@ -6,7 +6,7 @@ name := "open-planet-scala-client"
 
 organization := "com.lonelyplanet"
 
-version := "0.1.8"
+version := "0.2.0"
 
 scalaVersion := "2.11.8"
 
@@ -14,11 +14,16 @@ resolvers ++= Seq(
   Resolver.bintrayRepo("lonelyplanet", "maven")
 )
 
-libraryDependencies ++= Seq(
-  "io.spray"             %% "spray-json"             % "1.3.2",
-  "io.rest-assured"      %  "rest-assured"           % "3.0.1",
-  "org.scalatest"        %% "scalatest"              % "3.0.0" % "test"
-)
+libraryDependencies ++= {
+  val akkaHttpVersion       = "10.0.0"
+
+  Seq(
+    "com.typesafe.akka"    %% "akka-http-core"         % akkaHttpVersion,
+    "com.typesafe.akka"    %% "akka-http"              % akkaHttpVersion,
+    "io.spray"             %% "spray-json"             % "1.3.2",
+    "org.scalatest"        %% "scalatest"              % "3.0.1" % "test"
+  )
+}
 
 SbtScalariform.scalariformSettings
 
