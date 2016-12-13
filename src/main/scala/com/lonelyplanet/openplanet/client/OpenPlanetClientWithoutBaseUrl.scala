@@ -41,6 +41,7 @@ class OpenPlanetClientWithoutBaseUrl(apiKey: String) {
     uri.withQuery(Query(query.toMap ++ filters))
   }
 
+  // This is a blocking function, in the future it could we rewritten to operate on Futures
   private def getResponseBody(request: HttpRequest): JsValue = {
     val response = Await.result(Http().singleRequest(request), 30 seconds)
     Await.result(Unmarshal(response).to[String].map(_.parseJson), 30 seconds)
